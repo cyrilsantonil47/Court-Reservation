@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>The Riverside Courts-Dumaguete City</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <section class="head">
+        <div class="container flex1">
+          <div class="scoial">
+            <a href="https://www.facebook.com/profile.php?id=100070739118870" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
+          </div>
+          <div class="logo">
+            <img src="image/logo.png" alt="">
+          </div>
+          <div class="address">
+            <a href="https://www.google.com/maps/dir/9.3175436,123.2924852/9.31667,123.3/@9.318371,123.2918666,16z/data=!3m1!4b1!4m4!4m3!1m1!4e1!1m0" target="_blank"><i class="fas fa-map-marker-alt"></i></a>
+            <span>South Road, Calindagan, Dumaguete City, Philippines</span>
+          </div>
+        </div>
+      </section>
+    
+    
+      <header class="header">
+        <div class="container">
+          <nav class="navbar flex1">
+            <div class="sticky_logo logo">
+              <img src="image/logo.png" alt="">
+            </div>
+    
+            <ul class="nav-menu">
+              <li> <a href="index.html">Home</a> </li>
+              <li> <a href="court.html">Court</a> </li>
+              <li> <a href="#contact">Contact</a> </li>
+            </ul>
+            <div class="hamburger">
+              <span class="bar"></span>
+              <span class="bar"></span>
+              <span class="bar"></span>
+            </div>
+    
+            <div class="head_contact">
+              <i class="fas fa-phone-volume"></i>
+              <span>09123456789</span>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <script>
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+    
+        hamburger.addEventListener("click", mobliemmenu);
+    
+        function mobliemmenu() {
+          hamburger.classList.toggle("active");
+          navMenu.classList.toggle("active");
+        }
+    
+        window.addEventListener("scroll", function() {
+          var header = document.querySelector("header");
+          header.classList.toggle("sticky", window.scrollY > 0)
+        })
+      </script>
+<center><h1>COURT 2</h1></center>
+<div>Date: <input type="date" id="arrival-date" placeholder="05/18/2023"></div><div id="errorMessage" style="display: none; color: red;">Invalid date. Please select a valid date.</div>
+<div>Day: <span id="selectedDay"></span></div>
+
+<div>Total Cost: <span id="totalCost">₱0</span></div>
+<section class="btn-proceed" id="btn-proceed">
+  <div class="btn-proceed">
+    <button class="proceed" id="processReservation">Process Reservation</button>
+  </div>
+</section>
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+  </div>
+</div>
+
+<div id="inputModal" class="modal">
+  <div class="input-modal-content">
+    <span class="input-close">&times;</span>
+    <h2>Customer Details</h2>
+    <label for="name">Name for the Reservation:</label>
+    <input type="text" id="name" class="input-field" required><br><br>
+    <label for="phone-number">Phone Number:</label>
+    <input type="tel" id="phone-number" class="input-field" required><br><br>
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" class="input-field" required><br><br>
+    <button class="input-proceed" onclick="validateInput()">Proceed</button>
+  </div>
+</div>
+<div id="confirmationModal" class="modal">
+  <div class="modal-content">
+    <center><h1>Reservation Confirmed!</h1>
+    <p>What would you like to do next?</p>
+    <button id="showReceiptButton">Show Receipt</button>
+    <button id="doneButton">Done</button></center>
+  </div>
+</div>
+
+<!-- Receipt Modal -->
+<div id="receiptModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <center><h1>Receipt</h1></center>
+    <div id="receiptInfo"></div>
+    <div id="receiptReservation"></div>
+    <div id="receiptTotal"></div>
+    <div id="receiptChange"></div>
+  </div>
+</div>
+  
+  <section class="schedule" id="schedule">
+    <div class="btn-container">
+        <button class="btn" data-time="09:00 am" data-court="Court 2" onclick="saveSelectedTime('Court 2', '09:00 am')" onmouseover="showButtonInfo('Court 2', '09:00 am')" onmouseout="hideButtonInfo()">09:00 am</button>
+        <button class="btn" data-time="09:30 am" data-court="Court 2" onclick="saveSelectedTime('Court 2', '09:30 am')" onmouseover="showButtonInfo('Court 2', '09:30 am')" onmouseout="hideButtonInfo()">09:30 am</button>
+        <button class="btn" data-time="10:00 am" data-court="Court 2" onclick="saveSelectedTime('Court 2', '10:00 am')" onmouseover="showButtonInfo('Court 2', '10:00 am')" onmouseout="hideButtonInfo()">10:00 am</button>
+        <button class="btn" data-time="10:30 am" data-court="Court 2" onclick="saveSelectedTime('Court 2', '10:30 am')" onmouseover="showButtonInfo('Court 2', '10:30 am')" onmouseout="hideButtonInfo()">10:30 am</button>
+        <button class="btn" data-time="11:00 am" data-court="Court 2" onclick="saveSelectedTime('Court 2', '11:00 am')" onmouseover="showButtonInfo('Court 2', '11:00 am')" onmouseout="hideButtonInfo()">11:00 am</button>
+        <button class="btn" data-time="11:30 am" data-court="Court 2" onclick="saveSelectedTime('Court 2', '11:30 am')" onmouseover="showButtonInfo('Court 2', '11:30 am')" onmouseout="hideButtonInfo()">11:30 am</button>
+        <button class="btn" data-time="12:00 pm" data-court="Court 2" onclick="saveSelectedTime('Court 2', '12:00 pm')" onmouseover="showButtonInfo('Court 2', '12:00 pm')" onmouseout="hideButtonInfo()">12:00 pm</button>
+        <button class="btn" data-time="12:30 pm" data-court="Court 2" onclick="saveSelectedTime('Court 2', '12:30 pm')" onmouseover="showButtonInfo('Court 2', '12:30 pm')" onmouseout="hideButtonInfo()">12:30 pm</button>
+        <button class="btn" data-time="01:00 pm" data-court="Court 2" onclick="saveSelectedTime('Court 2', '01:00 pm')" onmouseover="showButtonInfo('Court 2', '01:00 pm')" onmouseout="hideButtonInfo()">01:00 pm</button>
+        <button class="btn" data-time="01:30 pm" data-court="Court 2" onclick="saveSelectedTime('Court 2', '01:30 pm')" onmouseover="showButtonInfo('Court 2', '01:30 pm')" onmouseout="hideButtonInfo()">01:30 pm</button>
+        <button class="btn" data-time="02:00 pm" data-court="Court 2" onclick="saveSelectedTime('Court 2', '02:00 pm')" onmouseover="showButtonInfo('Court 2', '02:00 pm')" onmouseout="hideButtonInfo()">02:00 pm</button>
+        <button class="btn" data-time="02:30 pm" data-court="Court 2" onclick="saveSelectedTime('Court 2', '02:30 pm')" onmouseover="showButtonInfo('Court 2', '02:30 pm')" onmouseout="hideButtonInfo()">02:30 pm</button>
+        <button class="btn" data-time="03:00 pm" data-court="Court 2" onclick="saveSelectedTime('Court 2', '03:00 pm')" onmouseover="showButtonInfo('Court 2', '03:00 pm')" onmouseout="hideButtonInfo()">03:00 pm</button>
+        <button class="btn" data-time="03:30 pm" data-court="Court 2" onclick="saveSelectedTime('Court 2', '03:30 pm')" onmouseover="showButtonInfo('Court 2', '03:30 pm')" onmouseout="hideButtonInfo()">03:30 pm</button>
+        <button class="btn" data-time="04:00 pm" data-court="Court 2" onclick="saveSelectedTime('Court 2', '04:00 pm')" onmouseover="showButtonInfo('Court 2', '04:00 pm')" onmouseout="hideButtonInfo()">04:00 pm</button>
+        <button class="btn" data-time="04:30 pm" data-court="Court 2" onclick="saveSelectedTime('Court 2', '04:30 pm')" onmouseover="showButtonInfo('Court 2', '04:30 pm')" onmouseout="hideButtonInfo()">04:30 pm</button>
+    </div>
+</section>
+
+<section class="map top">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d495.1083134672625!2d123.28925431543694!3d9.31745054808525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x33a99d3c3e1ea2a7%3A0xd6bdfca6f147ba6e!2sHarbor%20View%20Restobar%2C%20Candabong%2C%20Lila%2C%20Bohol!3m2!1d9.318080799999999!2d123.2906367!4m5!1s0x33a99d2cb9c69735%3A0xf13939d1d42b7f97!2z4Liq4Li44LiUIOC4meC4o-C4l-C4suC4tOC4l-C4q-C5hOC4oeC5jA!3m2!1d9.3161308!2d123.3018315!5e0!3m2!1sen!2sph!4v1654128496664!5m2!1sen!2sph" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+
+  <footer>
+    <div class="container top">
+      <div class="subscribe" id="contact">
+        <h2>Subscribe newsletter</h2>
+        <p> Subscribe now to receive notifications for discounts and events here in Riverside Courts-Dumaguete</p>
+        <div class="input flex">
+          <input type="email" placeholder="Your Email address">
+          <button class="flex1">
+            <span>Subscribe</span>
+            <i class="fas fa-arrow-circle-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="content grid  top">
+        <div class="box">
+          <p>Enjoy our facility and cherish every moment. </p>
+          <div class="social flex">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-youtube"></i>
+          </div>
+        </div>
+
+        <div class="box">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><i class="fas fa-angle-double-right"></i>Big Data</li>
+            <li><i class="fas fa-angle-double-right"></i>Wellness</li>
+            <li><i class="fas fa-angle-double-right"></i>Gallery</li>
+            <li><i class="fas fa-angle-double-right"></i>Reservation</li>
+            <li><i class="fas fa-angle-double-right"></i>FAQ</li>
+            <li><i class="fas fa-angle-double-right"></i>Contacts</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h2>Services</h2>
+          <ul>
+            <li><i class="fas fa-angle-double-right"></i>Restaurant</li>
+            <li><i class="fas fa-angle-double-right"></i>Billiard</li>
+            <li><i class="fas fa-angle-double-right"></i>Wellness</li>
+            <li><i class="fas fa-angle-double-right"></i>Conference Room</li>
+            <li><i class="fas fa-angle-double-right"></i>Events</li>
+            <li><i class="fas fa-angle-double-right"></i>Adult Room</li>
+          </ul>
+        </div>
+
+        <div class="box">
+          <h2>Services</h2>
+          <div class="icon flex">
+            <div class="i">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="text">
+              <h3>Address</h3>
+              <p>South Road, Calindagan, Dumaguete City, Philippines</p>
+            </div>
+          </div>
+          <div class="icon flex">
+            <div class="i">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="text">
+              <h3>Phone</h3>
+              <p>09123456789</p>
+            </div>
+          </div>
+          <div class="icon flex">
+            <div class="i">
+              <i class="far fa-envelope"></i>
+            </div>
+            <div class="text">
+              <h3>Email</h3>
+              <p>riversidecourtdumaguete@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+<script src="index.js"></script>
+</body>
+</html>
